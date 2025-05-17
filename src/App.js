@@ -7,8 +7,7 @@ function App() {
   const [logs, setLogs] = useState([]);
 
   const generateCard = () => {
-    const randomCard = "4111 " +
-      Array(3).fill(0).map(() => Math.floor(1000 + Math.random() * 9000)).join(" ");
+    const randomCard = "4111 " + Array(3).fill(0).map(() => Math.floor(1000 + Math.random() * 9000)).join(" ");
     setCardNumber(randomCard);
     const logEntry = `Card generated for ${merchant} - ${new Date().toLocaleTimeString()}`;
     setLogs([logEntry, ...logs]);
@@ -44,6 +43,19 @@ function App() {
           ))}
         </div>
       </div>
+
+      {/* Disclaimer */}
+      <p style={{
+        marginTop: "30px",
+        padding: "10px",
+        color: "#ddd",
+        fontSize: "12px",
+        textAlign: "center",
+        maxWidth: "400px"
+      }}>
+        This is a secure prototype deployed for demonstration purposes only. 
+        In a production environment, this system would be fully secured with PCI DSS compliance, HTTPS encryption, and cloud-based infrastructure to support real financial transactions.
+      </p>
 
       {/* Footer */}
       <footer style={{
