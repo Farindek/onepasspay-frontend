@@ -1,0 +1,58 @@
+/* ── 4-column compact merchant grid ───────────────────────── */
+.merchant-selector {}
+
+.merchant-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
+.merchant-btn {
+  width: 100%;
+  min-height: 140px;
+  padding: 0.7rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.18rem;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-2);
+
+  transition: background 0.14s, border-color 0.14s, color 0.14s, box-shadow 0.14s;
+}
+
+.merchant-btn:hover {
+  background: #faf5ff;
+  border-color: rgba(106, 17, 203, 0.35);
+  color: var(--text);
+}
+
+.merchant-btn--selected {
+  background: #f3e8ff;
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(106, 17, 203, 0.12) inset;
+}
+
+.merchant-name {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.15rem;
+}
+
+/* Category hidden at compact size */
+.merchant-category { display: none; }

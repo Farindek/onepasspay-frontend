@@ -1,0 +1,256 @@
+/* ── Empty state ──────────────────────────────────────────── */
+.card-display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-display--empty {
+  border: 1.5px dashed var(--primary);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.75rem;
+  background: #ffffff;
+}
+
+/* ── Card body — dark gradient, the one dark element on the page */
+.card-visual {
+  position: relative;
+  width: 100%;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem 1.8rem 1.5rem;
+  border-radius: 32px;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+
+  box-shadow:
+    0 0 0 1px rgba(106, 17, 203, 0.30),
+    0 24px 56px rgba(106, 17, 203, 0.30),
+    0 8px 20px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  transition: box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+/* Glossy top-left sheen */
+.card-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.05) 28%,
+    transparent 52%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Slow shimmer sweep */
+.card-visual::after {
+  content: '';
+  position: absolute;
+  inset: -55%;
+  background: linear-gradient(
+    108deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 64%
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: cardShimmer 5s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+  0%   { transform: translateX(-60%) rotate(-12deg); }
+  50%  { transform: translateX(60%) rotate(-12deg); }
+  100% { transform: translateX(-60%) rotate(-12deg); }
+}
+
+/* ── Expired / used: desaturate + dim ─────────────────────── */
+.card-display--expired .card-visual,
+.card-display--used    .card-visual {
+  filter: saturate(0.20) brightness(0.50);
+}
+.card-display--expired .card-visual::after,
+.card-display--used    .card-visual::after { animation: none; }
+
+/* ── Top bar ──────────────────────────────────────────────── */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+}
+
+.card-issuer {
+  font-size: 1.32rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.card-countdown {
+  font-size: 1.52rem;
+  font-weight: 700;
+  color: #fde68a;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(253, 230, 138, 0.50);
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+}
+
+.card-status-pill {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+
+.card-status-pill--expired {
+  background: rgba(254, 202, 202, 0.20);
+  color: #fca5a5;
+  border: 1px solid rgba(252, 165, 165, 0.40);
+}
+
+.card-status-pill--used {
+  background: rgba(167, 243, 208, 0.20);
+  color: #6ee7b7;
+  border: 1px solid rgba(110, 231, 183, 0.40);
+}
+
+/* ── EMV chip ─────────────────────────────────────────────── */
+.card-chip {
+  position: relative;
+  z-index: 3;
+  width: 72px;
+  height: 54px;
+  margin-top: auto;
+  border-radius: 7px;
+  background: linear-gradient(
+    148deg,
+    #b07a24 0%,
+    #e8c44a 22%,
+    #f0d866 42%,
+    #d4a632 58%,
+    #e8c44a 76%,
+    #b07a24 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.card-chip::before {
+  content: '';
+  position: absolute;
+  left: 37%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 7px 0 0 rgba(0, 0, 0, 0.10), -7px 0 0 rgba(0, 0, 0, 0.10);
+}
+
+.card-chip::after {
+  content: '';
+  position: absolute;
+  top: 36%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 9px 0 rgba(0, 0, 0, 0.10), 0 -9px 0 rgba(0, 0, 0, 0.10);
+}
+
+/* ── Card number ──────────────────────────────────────────── */
+.card-pan {
+  position: relative;
+  z-index: 3;
+  margin-top: 1rem;
+  font-size: 2.52rem;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.30);
+}
+
+/* ── Bottom row ───────────────────────────────────────────── */
+.card-bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.4rem;
+  margin-top: 0.8rem;
+  position: relative;
+  z-index: 3;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.card-label {
+  font-size: 0.95rem;
+  letter-spacing: 0.10em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.card-value {
+  font-size: 1.58rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+}
+
+.card-value--name {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card-network {
+  margin-left: auto;
+  font-size: 2.1rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.70);
+  align-self: flex-end;
+}
+
+/* ── Mark as used button ──────────────────────────────────── */
+.btn-mark-used {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-size: 1.7rem;
+  font-weight: 600;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.btn-mark-used:hover {
+  background: #f3e8ff;
+  border-color: rgba(106, 17, 203, 0.40);
+  box-shadow: 0 2px 8px rgba(106, 17, 203, 0.12);
+}

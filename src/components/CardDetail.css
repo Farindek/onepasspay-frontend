@@ -1,0 +1,271 @@
+/* ── Wrapper ──────────────────────────────────────────────── */
+.card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.cd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cd-title {
+  font-size: 1.48rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--primary);
+}
+
+.cd-status-badge {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+
+.cd-status-badge--active {
+  background: #dcfce7;
+  color: #059669;
+  border: 1px solid #86efac;
+}
+
+.cd-status-badge--expired {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.cd-status-badge--used {
+  background: #ede9fe;
+  color: #6a11cb;
+  border: 1px solid #c4b5fd;
+}
+
+.cd-card-id {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--muted);
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+  letter-spacing: 0.06em;
+  margin-top: -0.4rem;
+}
+
+/* ── Info pills ───────────────────────────────────────────── */
+.cd-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+.cd-pill {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cd-pill-label {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.cd-pill-value {
+  font-size: 1.60rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cd-pill-value--name {
+  font-size: 1.52rem;
+}
+
+.cd-pill-value--countdown {
+  color: var(--warning);
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+}
+
+.cd-pill-value--inactive {
+  color: var(--muted);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Security score card ──────────────────────────────────── */
+.cd-score-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cd-score-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.cd-score-heading {
+  font-size: 1.28rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.cd-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.cd-score-number {
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.4s ease;
+}
+
+.cd-score-denom {
+  font-size: 1.75rem;
+  color: var(--muted);
+}
+
+.cd-score-grade {
+  margin-left: auto;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.cd-score-track-wrap {
+  padding-top: 0.1rem;
+}
+
+.cd-score-track {
+  height: 5px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cd-score-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
+}
+
+/* ── Factors ──────────────────────────────────────────────── */
+.cd-factors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+}
+
+.cd-factor {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cd-factor-name {
+  flex: 1;
+  font-size: 1.42rem;
+  color: var(--text-2);
+}
+
+.cd-factor-badge {
+  font-size: 1.22rem;
+  font-weight: 600;
+  min-width: 7rem;
+  text-align: right;
+}
+
+/* ── Dots ─────────────────────────────────────────────────── */
+.cd-dots {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cd-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  transition: background 0.3s ease;
+}
+
+/* ── Card fields ──────────────────────────────────────────── */
+.cd-fields {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cd-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.58rem 1rem;
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.cd-field:nth-child(even) { background: #f9f9f9; }
+.cd-field:last-child { border-bottom: none; }
+
+.cd-field-label {
+  font-size: 1.22rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.cd-field-value {
+  font-size: 1.48rem;
+  color: var(--text);
+  text-align: right;
+}
+
+.cd-mono {
+  font-family: 'SFMono-Regular', 'Courier New', monospace;
+  letter-spacing: 0.07em;
+}
+
+.cd-dim {
+  font-size: 1.15rem;
+  color: var(--text-2);
+  word-break: break-all;
+  text-align: right;
+}
+
+.cd-muted { color: var(--muted); }
